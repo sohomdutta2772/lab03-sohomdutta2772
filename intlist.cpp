@@ -85,6 +85,7 @@ double IntList::average() const {
     while(curr!=nullptr){
         sum = sum + curr->info;
         count = count + 1;
+        curr = curr->next;
     }
     return sum / count;
 }
