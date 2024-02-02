@@ -11,9 +11,9 @@ using std::cout;
 // copy constructor
 IntList::IntList(const IntList& source) {
     first = nullptr;
-    Node* curr = source->first;
+    Node* curr = source.first;
     while(curr!=nullptr){
-        append(curr);
+        append(curr->info);
         curr = curr->next;
     }
 }
