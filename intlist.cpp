@@ -17,9 +17,9 @@ IntList::IntList(const IntList& source) {
 IntList::~IntList() {
     if(first!=nullptr){
         Node* next = first->next;
-        free(first);
+        delete first;
         first = next;
-        IntList();
+        ~IntList();
     }
 }
 
