@@ -52,6 +52,7 @@ bool IntList::contains(int value) const {
         if(curr->info==value){
             return true;
         }
+        curr = curr->next;
     }
     return false;
 }
