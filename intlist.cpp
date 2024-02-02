@@ -64,7 +64,9 @@ int IntList::max() const {
     Node* curr = first;
     int maxVal = curr->info;
     while(curr!=nullptr){
-        maxVal = std::max(maxVal, curr->info);
+        if(curr->info>maxVal){
+            maxVal=curr->info;
+        }
         curr = curr->next;
     }
     return maxVal;
