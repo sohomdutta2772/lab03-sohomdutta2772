@@ -10,7 +10,12 @@ using std::cout;
 
 // copy constructor
 IntList::IntList(const IntList& source) {
-        //IMPLEMENT THIS
+    first = nullptr;
+    Node* curr = source->first;
+    while(curr!=nullptr){
+        append(curr);
+        curr = curr->next;
+    }
 }
 
 // destructor deletes all nodes
