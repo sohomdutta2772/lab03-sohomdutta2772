@@ -1,47 +1,92 @@
 // intlist.cpp
 // Implements class IntList
-// YOUR NAME(S), AND DATE
+// Sohom Dutta, February 1, 2024
 
 #include "intlist.h"
 
 #include <iostream>
+#include <algorithm>
 using std::cout;
 
 // copy constructor
 IntList::IntList(const IntList& source) {
-    //IMPLEMENT THIS
+        //IMPLEMENT THIS
 }
 
 // destructor deletes all nodes
 IntList::~IntList() {
-    //IMPLEMENT THIS
+    if(first!=nullptr){
+        Node* next = first->next;
+        free(first);
+        first = next;
+        IntList();
+    }
 }
-
 
 // return sum of values in list
 int IntList::sum() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    int sum = 0;
+    Node* curr = first;
+    while(curr!=nullptr){
+        sum = sum + curr->info;
+        curr = curr->next;
+    }
+    return sum;
 }
 
 // returns true if value is in the list; false if not
 bool IntList::contains(int value) const {
-    return false; // REPLACE THIS NON-SOLUTION
+    Node* curr = first;
+    while(curr!=nullptr){
+        if(curr->info==value){
+            return true;
+        }
+    }
+    return false;
 }
 
 // returns maximum value in list, or 0 if empty list
 int IntList::max() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    if(first==nullptr){
+        return 0;
+    }
+    Node* curr = first;
+    int maxVal = curr->info;
+    while(curr!=nullptr){
+        maxVal = std::max(maxVal, curr->info);
+        curr = curr->next;
+    }
+    return maxVal;
 }
 
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
-    return 0.0; // REPLACE THIS NON-SOLUTION
+    if(first==nullptr){
+        return 0.0;
+    }
+    double sum = 0.0;
+    double count = 0.0;
+    Node* curr = first;
+    while(curr!=nullptr){
+        sum = sum + curr->info;
+        count = count + 1;
+    }
+    return sum / count;
 }
 
 // inserts value as new node at beginning of list
 void IntList::insertFirst(int value) {
-    // IMPLEMENT
+    if(first==nullptr){
+        first = new IntList::Node();
+        first->info = value;
+        first->next = nullptr;
+        return;
+    }
+    Node* root = new IntList::Node();
+    root->info = value;
+    root->next = first;
+    first = root;
 }
 
 //Assignment operator should copy the list from the source
