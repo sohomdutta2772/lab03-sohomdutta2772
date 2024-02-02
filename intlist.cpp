@@ -16,10 +16,17 @@ IntList::IntList(const IntList& source) {
 // destructor deletes all nodes
 IntList::~IntList() {
     if(first!=nullptr){
-        Node* next = first->next;
-        delete next;
-        delete first;
+        Node* prev = first;
+        Node* curr = first->next;
+        while(curr!=nullptr){
+            Node* copy = curr;
+            delete prev;
+            prev = copy;
+            curr = curr->next;
+        }       
+        delete prev;
     }
+    
 }
 
 // return sum of values in list
